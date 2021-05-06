@@ -16,9 +16,9 @@ svg{
     height: 3.8em;
 }
 h1{
-    font-size: $HeaderSize;
+    font-size: $headerSize;
     color: $textWhite;
-    font-family: Lora;
+    font-family: $headerFont;
     font-style: normal;
     font-weight: bold;
     line-height: 46px;
