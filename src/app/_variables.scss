@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+// Reset
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+// variables
+
 $primary : #ED1D24;
 $secondary : #56423E;
 $accent : #BEA6A1;
@@ -8,4 +16,32 @@ $textWhite: #fff;
 $headerSize : 2em;
 $headerFont : Lora;
 $bodyFont: Roboto;
-$bodySize: 1.2em
+$bodySize: 0.9em;
+
+$navbarHeight: 4em;
+$sidebarWidth: 12em;
+$buttonNormalWidth: 11rem;
+$buttonNormalHeight: 3rem;
+
+//// Components 
+
+// button 
+@mixin normalButton {
+    height: $buttonNormalHeight;
+    width: $buttonNormalWidth;
+    background-color: $primary;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    font-family: $bodyFont;
+    font-size: $bodySize;
+    color: $textWhite;
+    font-weight: 700;
+    border:none;
+    cursor: pointer;
+}
+
+@mixin smallButton {
+    @include normalButton();
+    max-width: 20%;
+    height: 30px;
+}

@@ -5,12 +5,13 @@
     left: 0%;
     right: 0%;
     top: 0%;
-    height: 4em;
+    height: $navbarHeight;
     background-color: $primary;
     filter: drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.25));
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 svg{
     height: 3.8em;
@@ -19,8 +20,6 @@ h1{
     font-size: $headerSize;
     color: $textWhite;
     font-family: $headerFont;
-    font-style: normal;
-    font-weight: bold;
     line-height: 46px;
     transform: translateX(-1em);
 }
