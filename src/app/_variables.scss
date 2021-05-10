@@ -23,6 +23,8 @@ $sidebarWidth: 12em;
 $buttonNormalWidth: 11rem;
 $buttonNormalHeight: 3rem;
 
+$singleCardRatio: 0.75;
+$singleCardHeight: 250px;
 //// Components 
 
 // button 
@@ -44,4 +46,12 @@ $buttonNormalHeight: 3rem;
     @include normalButton();
     max-width: 20%;
     height: 30px;
+}
+@mixin detailsButton {
+    @include normalButton();
+    background-color: $secondary;
+    width: 100px;
+    height: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: $headerFont;
 }

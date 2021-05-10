@@ -5,23 +5,7 @@
     <button type="submit">Search</button>
 </form>
 <p>Search by first letter</p>
-<div class="letters_container">
-    <button>A</button>
-    <button>B</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button>
-    <button>A</button><button>A</button><button>A</button><button>A</button><button>A</button><button>A</button><button>A</button><button>A</button><button>A</button><button>A</button>
+<div class="letters_container" >
+   <button *ngFor="let letter of alphabetArray" (click)='clickEvent(letter)'>{{letter|uppercase}}</button>
 </div>
 <p>Powered by Marvel</p>

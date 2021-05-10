@@ -1,0 +1,47 @@
+@import '../variables';
+
+:host{
+    width: calc(#{$singleCardHeight} * #{$singleCardRatio});
+    height: $singleCardHeight;
+    margin: 1.2em;
+    filter: drop-shadow(0px 0px 10px #000000);
+    background: linear-gradient(360deg, #ED1D24 12.37%, rgba(97, 7, 110, 0.58) 99.99%); 
+    border-radius: 5px 5px 15px 15px;
+    &:hover{
+        transform: scale(1.05);
+        filter: drop-shadow(0px 0px 10px #ED1D24);
+
+    }
+    transition: 0.3s;
+}
+.card{
+    position: relative;
+    &__header{
+        width: auto;
+        height: calc(#{$singleCardHeight}/2);
+        & img{
+            width: 100%;
+            height: calc(#{$singleCardHeight}/2);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 5px 120px 5px 10px;
+            
+        }
+    }
+    &__body{
+        margin: 0 1em;
+        font-size: 0.8em;
+        color: $textWhite;
+        font-family: $bodyFont;
+        height: calc(#{$singleCardHeight}/2);
+        & button{
+            @include detailsButton;
+            position: absolute;
+            bottom: 1em;
+            right: 1em;
+        }
+        & p{
+        padding-top: 0.6em;
+
+        }
+    }
+}

@@ -69,7 +69,7 @@ form input{
     gap: 8px;
     flex-basis: auto;
     & button{
-        @include smallButton
+        @include smallButton;
     }
 }
 
