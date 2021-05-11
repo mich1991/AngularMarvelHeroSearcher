@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SingleCardComponent } from './single-card/single-card.component';
+import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    SingleCardComponent
+    SingleCardComponent,
+    HeroDetailsComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
