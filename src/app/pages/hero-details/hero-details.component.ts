@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import {switchMap} from 'rxjs/operators'
+import { MarvelApiService } from 'src/app/marvel-api.service';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-hero-details',
@@ -13,21 +16,18 @@ export class HeroDetailsComponent implements OnInit {
   // characterDetails= Observable<{}>;
   characterDetails= {id:2}
   public id: string | null
-  // constructor(private http: HttpService, private route: ActivatedRoute) { }
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private http: MarvelApiService) {
     this.id = '1'
   }
 
   ngOnInit(): void {
-    // this.route.paramMap.pipe(
-    //     switchMap((params:ParamMap) => this.http.getCharacter(params.get('id')))
-    // )
-
-    // this.route.queryParams.subscribe((params) => {
-    //   // this.characterDetails.id = params.get('id')
-    //   console.log(params['id'])
     this.id = this.route.snapshot.paramMap.get('id');
-    // })
+ 
+  }
+  getCharacter(){
+    // this.http.getCharacters()
+    console.log('clicked')
+    this.http.getCharacters().pipe(tap(console.log)).subscribe()
   }
 }
 
