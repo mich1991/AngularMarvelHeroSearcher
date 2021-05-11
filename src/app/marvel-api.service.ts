@@ -36,5 +36,27 @@ export class MarvelApiService {
       observe: 'body' // use response for full details info. 
     })
   }
+  getCharacterById(id:string): Observable<{}> {
+    return this.http.get(`${this.url}/characters`,{
+      params: {
+        "apikey": publicKey,
+        "ts": String(this.ts),
+        "hash": this.getHash(),
+        "id": id
+      },
+      observe: 'body' // use response for full details info. 
+    })
+  }
+  getCharacterByName(name:string): Observable<{}> {
+    return this.http.get(`${this.url}/characters`,{
+      params: {
+        "apikey": publicKey,
+        "ts": String(this.ts),
+        "hash": this.getHash(),
+        "nameStartsWith": name
+      },
+      observe: 'body' // use response for full details info. 
+    })
+  }
 
 }

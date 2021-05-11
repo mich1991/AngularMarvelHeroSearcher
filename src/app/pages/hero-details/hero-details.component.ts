@@ -13,21 +13,27 @@ import { tap } from 'rxjs/operators';
 })
 export class HeroDetailsComponent implements OnInit {
 
+  public paramId:string;
+  public id;
+  
   // characterDetails= Observable<{}>;
-  characterDetails= {id:2}
-  public id: string | null
+
   constructor(private route: ActivatedRoute, private http: MarvelApiService) {
     this.id = '1'
+    this.paramId = '1'
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
- 
+    this.paramId = this.route.snapshot.paramMap.get('id')!;
+    // console.log('paramId', this.paramId)
+    console.log(this.route.snapshot.paramMap.get('id'))
   }
   getCharacter(){
-    // this.http.getCharacters()
-    console.log('clicked')
     this.http.getCharacters().pipe(tap(console.log)).subscribe()
+  }
+  getCharacterById(){
+    let id = this.paramId
+    this.http.getCharacterById(id).pipe(tap(console.log)).subscribe()
   }
 }
 
