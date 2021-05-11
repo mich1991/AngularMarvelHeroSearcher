@@ -5,8 +5,9 @@ import {HeroDetailsComponent} from './pages/hero-details/hero-details.component'
 
 
 const routes: Routes = [
-  {path:'', component: MainPageComponent},
-  {path:'character/:id', component: HeroDetailsComponent}
+  {path:'', component: MainPageComponent, pathMatch: 'full'},
+  {path:'character/:id', component: HeroDetailsComponent},
+  {path: '**', redirectTo:''} // wildcard path, redicrect to MainPage
 ];
 
 @NgModule({
