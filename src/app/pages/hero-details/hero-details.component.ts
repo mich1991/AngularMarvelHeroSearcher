@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import {switchMap} from 'rxjs/operators'
+import { Observable, Subscription } from 'rxjs';
+import {map, switchMap} from 'rxjs/operators'
 import { MarvelApiService } from 'src/app/marvel-api.service';
 import { tap } from 'rxjs/operators';
 
@@ -11,29 +11,34 @@ import { tap } from 'rxjs/operators';
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.scss']
 })
-export class HeroDetailsComponent implements OnInit {
+export class HeroDetailsComponent implements OnInit, OnDestroy {
 
   public paramId:string;
-  public id;
   
-  // characterDetails= Observable<{}>;
+  character: any
 
   constructor(private route: ActivatedRoute, private http: MarvelApiService) {
-    this.id = '1'
-    this.paramId = '1'
+    this.paramId = this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit(): void {
-    this.paramId = this.route.snapshot.paramMap.get('id')!;
     // console.log('paramId', this.paramId)
     console.log(this.route.snapshot.paramMap.get('id'))
+    this.getCharacterById();
   }
+  ngOnDestroy(): void{
+    this.character.unsubscribe()
+  }
+
   getCharacter(){
     this.http.getCharacters().pipe(tap(console.log)).subscribe()
   }
   getCharacterById(){
     let id = this.paramId
-    this.http.getCharacterById(id).pipe(tap(console.log)).subscribe()
+    return this.character=  this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => this.character = res.data.results[0])
+  }
+  showDetails() : void {
+    console.log(this.character)
   }
 }
 
