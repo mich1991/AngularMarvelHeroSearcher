@@ -1,8 +1,8 @@
 <div class="card__header">
-    <img src="./../../assets/image.jpg" alt="" srcset="">
+    <img src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}" srcset="">
 </div>
 <div class="card__body">
-    <p><b>Name:</b> Spiderman</p>
+    <p><b>Name:</b> {{hero.name}}</p>
     <p><b>Series:</b> Lorem ipsum dolor sit amet </p>
-    <button [routerLink]="['/character', 'hero.id']">Learn More</button>
+    <button [routerLink]="['/character', hero.id]">Learn More</button>
 </div>

@@ -1,13 +1,16 @@
 export interface Hero {
-    comics: object,
+    comics: {},
     description: string,
-    events: object,
+    events: {},
     id: number,
     modified: string,
     name: string,
     resourceURI: string,
-    series: object,
-    stories: object,
-    thumbnail : object,
+    series: {},
+    stories: {},
+    thumbnail : {
+        path: string,
+        extension: string
+    },
     urls: [],
 }
