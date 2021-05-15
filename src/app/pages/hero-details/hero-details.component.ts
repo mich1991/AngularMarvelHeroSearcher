@@ -1,10 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import {map, switchMap} from 'rxjs/operators'
+import { ActivatedRoute } from '@angular/router';
+import {  Subscription } from 'rxjs';
 import { MarvelApiService } from 'src/app/marvel-api.service';
 import { tap } from 'rxjs/operators';
-import { Hero } from 'src/app/models/Hero';
 
 
 @Component({
@@ -17,7 +15,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   @Input()
   public paramId:string;
   private subscription = new Subscription();
-  character: any 
+  character: any
 
   constructor(private route: ActivatedRoute, private http: MarvelApiService) {
     this.paramId = this.route.snapshot.paramMap.get('id')!;
@@ -31,9 +29,6 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 
-  // getCharacter(){
-  //   this.http.getCharacters().pipe(tap(console.log)).subscribe()
-  // }
   getCharacterById(){
     let id = this.paramId
     const sub = this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => this.character = res.data.results[0])
