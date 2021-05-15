@@ -31,9 +31,9 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 
-  getCharacter(){
-    this.http.getCharacters().pipe(tap(console.log)).subscribe()
-  }
+  // getCharacter(){
+  //   this.http.getCharacters().pipe(tap(console.log)).subscribe()
+  // }
   getCharacterById(){
     let id = this.paramId
     const sub = this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => this.character = res.data.results[0])

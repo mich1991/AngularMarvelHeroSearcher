@@ -1,8 +1,8 @@
 <p>Search character by name</p>
 <form>
     <i class="fas fa-search"></i>
-    <input type="text" name="name" id="name" placeholder="Name...">
-    <button type="submit">Search</button>
+    <input type="text" name="name" id="name" placeholder="Name..." #searchname>
+    <button type="button" (click)="onClick(searchname)">Search</button>
 </form>
 <p>Search by first letter</p>
 <div class="letters_container" >
