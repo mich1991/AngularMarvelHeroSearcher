@@ -1,7 +1,15 @@
 <div class="container" *ngIf="character">
-    
-    <p>my name is {{character.name}}</p>
-    <p>I am just a id : {{paramId}}</p>
-    <button (click)= "showDetails()">check me</button>
-    <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+    <div class="back_box">
+        <button class="back" (click)="goBack()"> <i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <main>
+        <div class="img_box">
+            <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+        </div>
+        <div class="desc_box">
+            <p>my name is {{character.name}}</p>
+            <p>I am just a id : {{paramId}}</p>
+            <button (click)= "showDetails()">check me</button>
+        </div>
+    </main>
 </div>

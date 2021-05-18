@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {  Subscription } from 'rxjs';
 import { MarvelApiService } from 'src/app/marvel-api.service';
 import { tap } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   character: any
 
-  constructor(private route: ActivatedRoute, private http: MarvelApiService) {
+  constructor(private route: ActivatedRoute, private http: MarvelApiService, private location: Location) {
     this.paramId = this.route.snapshot.paramMap.get('id')!;
   }
 
@@ -36,6 +37,9 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   }
   showDetails() : void {
     console.log(this.character)
+  }
+  goBack(){
+    this.location.back()
   }
 }
 
