@@ -11,5 +11,14 @@
     flex-wrap: wrap;
     justify-content: center;
     // align-items: center;
-    padding: 1em 1.3em;
+    padding: 1em 1.3em 4em 1.3em;
+}
+
+button{
+    @include normalButton;
+    position: absolute;
+    bottom:1em
+}
+button:first-of-type{
+    left:20%
 }

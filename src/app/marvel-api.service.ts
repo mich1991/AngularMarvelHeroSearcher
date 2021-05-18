@@ -21,6 +21,9 @@ export class MarvelApiService {
   behaviorSubject = new BehaviorSubject<Hero[]>([]);
 
   heroName: string = 'iron'
+  offset : number = 0
+  limit: number = 2
+  characters :Hero[] = []
 
   constructor(private http: HttpClient) {  }
 
@@ -34,7 +37,9 @@ export class MarvelApiService {
         "apikey": publicKey,
         "ts": String(this.ts),
         "hash": this.getHash(),
-        "nameStartsWith": this.heroName
+        "nameStartsWith": this.heroName,
+        "offset" : String(this.offset),
+        "limit" : String(this.limit),
       },
       observe: 'body' // use response for full details info. 
     })
@@ -44,8 +49,11 @@ export class MarvelApiService {
       map((res: any) => res.data.results),
       tap(console.log)
       ).subscribe(data => this.behaviorSubject.next(data))
-     
-    
+  }
+
+  getMoreCharacters(){
+    this.offset += 2
+    this.getCharacters()
   }
 
   getCharacterById(id:string): Observable<{}> {
@@ -60,4 +68,7 @@ export class MarvelApiService {
     })
   }
 
+  newSearch(){
+    this.offset = 0
+  }
 }

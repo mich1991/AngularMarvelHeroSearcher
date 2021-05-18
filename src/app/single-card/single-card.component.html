@@ -4,7 +4,7 @@
 <div class="card__body">
     <p><b>Name:</b> {{hero.name}}</p>
     <p><b>Description:</b> 
-        {{descriptionFound()| shorten: 20: '...' : false}}
+        {{descriptionFound()| slice: 0:20 }}...
      </p>
     <button [routerLink]="['/character', hero.id]">Learn More</button>
 </div>

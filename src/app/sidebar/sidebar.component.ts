@@ -21,10 +21,12 @@ export class SidebarComponent implements OnInit {
   clickEvent(str:string): void{
     console.log(str)
     this.http.heroName = str
+    this.http.newSearch()
     this.http.getCharacters()
   }
   onClick(name: any){
     this.http.heroName = name.value
+    this.http.newSearch()
     this.http.getCharacters()
     name.value = ''
   }
