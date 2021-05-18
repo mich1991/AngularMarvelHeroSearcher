@@ -17,6 +17,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   public paramId:string;
   private subscription = new Subscription();
   character: any
+  isLoading:boolean = false
 
   constructor(private route: ActivatedRoute, private http: MarvelApiService, private location: Location) {
     this.paramId = this.route.snapshot.paramMap.get('id')!;
@@ -31,8 +32,11 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   }
 
   getCharacterById(){
+    this.isLoading = true
     let id = this.paramId
-    const sub = this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => this.character = res.data.results[0])
+    const sub = this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => {
+      this.isLoading = false
+      return this.character = res.data.results[0]})
     this.subscription.add(sub)
   }
   showDetails() : void {

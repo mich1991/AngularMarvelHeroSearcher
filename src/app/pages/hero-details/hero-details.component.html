@@ -1,4 +1,12 @@
-<div class="container" *ngIf="character">
+<ng-container *ngIf="character && !isLoading; then ready; else loading"></ng-container>
+
+<ng-template #loading>
+    
+    <div class="loader"></div>
+</ng-template>
+<ng-template #ready>
+
+<div class="container">
     <div class="back_box">
         <button class="back" (click)="goBack()"> <i class="fas fa-arrow-left"></i> Back</button>
     </div>
@@ -7,9 +15,22 @@
             <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
         </div>
         <div class="desc_box">
-            <p>my name is {{character.name}}</p>
-            <p>I am just a id : {{paramId}}</p>
-            <button (click)= "showDetails()">check me</button>
+            <h1>{{character.name}}</h1>
+            <p>{{character.description}}</p>
+            <a href="{{character.urls[0].url}}" target="_blank">
+                <button>Visit at Marvel</button>
+            </a>
+            <button (click)= "showDetails()">Check Me</button>
         </div>
     </main>
+    <aside>
+        <h1>Appeared:</h1>
+        <div class="appearience_box">
+            <button>Comics</button>
+            <button>Series</button>
+            <button>Events</button>
+        </div>
+    </aside>
 </div>
+    
+</ng-template>

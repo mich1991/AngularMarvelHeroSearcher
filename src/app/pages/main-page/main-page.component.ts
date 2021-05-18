@@ -14,7 +14,7 @@ import { Hero } from '../../models/Hero'
 export class MainPageComponent implements OnInit , OnDestroy{
  
   characters!: Hero[];
-
+  isLoading : boolean = false
   private subscriptions = new Subscription() 
   
 
@@ -31,8 +31,11 @@ export class MainPageComponent implements OnInit , OnDestroy{
   }
 
   getCharacters(): void {
+    this.isLoading = true
     this.http.getCharacters()
-    const sub = this.http.behaviorSubject.subscribe((data: Hero[]) => this.characters = data)
+    const sub = this.http.behaviorSubject.subscribe((data: Hero[]) => {
+      this.isLoading = false
+      return this.characters = data})
     this.subscriptions.add(sub)
   }
 

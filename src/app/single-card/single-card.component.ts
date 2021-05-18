@@ -8,9 +8,7 @@ import { Hero } from '../models/Hero';
 })
 export class SingleCardComponent implements OnInit {
 
-  @Input()
-
-  hero! : Hero
+  @Input() hero! : Hero
   constructor() { }
 
   ngOnInit(): void {
