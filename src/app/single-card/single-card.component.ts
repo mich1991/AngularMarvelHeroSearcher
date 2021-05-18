@@ -14,4 +14,7 @@ export class SingleCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  descriptionFound(): string{
+    return this.hero.description.length > 1 ? this.hero.description : 'Not Found'
+  }
 }

@@ -10,6 +10,9 @@ import { SingleCardComponent } from './single-card/single-card.component';
 import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
+
+import { NgPipesModule } from 'ngx-pipes';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +20,13 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     SidebarComponent,
     SingleCardComponent,
     HeroDetailsComponent,
-    MainPageComponent
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgPipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

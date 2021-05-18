@@ -3,6 +3,8 @@
 </div>
 <div class="card__body">
     <p><b>Name:</b> {{hero.name}}</p>
-    <p><b>Series:</b> Lorem ipsum dolor sit amet </p>
+    <p><b>Description:</b> 
+        {{descriptionFound()| shorten: 20: '...' : false}}
+     </p>
     <button [routerLink]="['/character', hero.id]">Learn More</button>
 </div>
