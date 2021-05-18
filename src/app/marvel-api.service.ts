@@ -68,7 +68,9 @@ export class MarvelApiService {
     })
   }
 
-  newSearch(){
+  newSearch(name : string){
     this.offset = 0
+    this.heroName = name
+    this.getCharacters()
   }
 }

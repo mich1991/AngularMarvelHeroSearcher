@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
 import { MarvelApiService } from '../marvel-api.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   searchName!: string
 
-  constructor(private http: MarvelApiService) { }
+  constructor(private http: MarvelApiService, private data : DatabaseService) { }
 
   ngOnInit(): void {
 
@@ -20,14 +21,13 @@ export class SidebarComponent implements OnInit {
 
   clickEvent(str:string): void{
     console.log(str)
-    this.http.heroName = str
-    this.http.newSearch()
-    this.http.getCharacters()
+    this.data.characters = []
+    this.http.newSearch(str)
+    
   }
   onClick(name: any){
-    this.http.heroName = name.value
-    this.http.newSearch()
-    this.http.getCharacters()
+    this.data.characters = []
+    this.http.newSearch(name.value)
     name.value = ''
   }
 }
