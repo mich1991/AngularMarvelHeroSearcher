@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {publicKey, privateKey} from './apikeys'
 
 import * as md5 from 'md5'
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Hero } from './models/Hero';
 import { map, tap } from 'rxjs/operators';
@@ -18,21 +18,22 @@ export class MarvelApiService {
   private url:string = 'http://gateway.marvel.com/v1/public/'
   private ts = Date.now()
 
-  behaviorSubject = new BehaviorSubject<Hero[]>([]);
-
   heroName: string = 'iron'
   offset : number = 0
-  limit: number = 2
+  limit: number = 20
   characters :Hero[] = []
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { 
+    this.getCharacters()
+  }
 
   getHash(){
     return md5(this.ts + privateKey + publicKey )
   }
 
-  getCharacters(): void {
-    this.http.get<Hero[]>(`${this.url}/characters`,{
+  
+  getFromApi() : Observable<Hero[]>{
+    return this.http.get<Hero[]>(`${this.url}/characters`,{
       params: {
         "apikey": publicKey,
         "ts": String(this.ts),
@@ -48,14 +49,17 @@ export class MarvelApiService {
       //map((res: any) => res.data.results.filter((res : Hero) => res.description.length > 0)),
       map((res: any) => res.data.results),
       tap(console.log)
-      ).subscribe(data => this.behaviorSubject.next(data))
+      )
   }
-
+  
+  getCharacters(): void{
+    this.getFromApi().subscribe((data : Hero[]) => this.characters = data)
+  }
   getMoreCharacters(){
-    this.offset += 2
-    this.getCharacters()
+    this.offset = this.offset + 20 
+    this.getFromApi().subscribe((data : Hero[]) => this.characters.push(...data))
   }
-
+  
   getCharacterById(id:string): Observable<{}> {
     return this.http.get(`${this.url}/characters`,{
       params: {
@@ -69,8 +73,10 @@ export class MarvelApiService {
   }
 
   newSearch(name : string){
-    this.offset = 0
     this.heroName = name
-    this.getCharacters()
+    this.offset = 0
+    this.characters = []
+    this.getFromApi().subscribe((data : Hero[]) => this.characters = data)
   }
+
 }
