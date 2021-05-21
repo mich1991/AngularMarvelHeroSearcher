@@ -11,9 +11,6 @@ import { MarvelApiService } from 'src/app/marvel-api.service';
 })
 export class MainPageComponent implements OnInit , OnDestroy{
 
-  isLoading : boolean = false
-  moreAvailable: boolean = false
-
   constructor(public http: MarvelApiService, private route: ActivatedRoute) { 
   }
 

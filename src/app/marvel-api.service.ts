@@ -20,9 +20,10 @@ export class MarvelApiService {
 
   heroName: string = 'iron'
   offset : number = 0
-  limit: number = 2
+  limit: number = 20
   characters :Hero[] = []
   moreAvailable: boolean = false
+  isLoading : boolean = false
 
   constructor(private http: HttpClient) { 
     this.getCharacters()
@@ -54,9 +55,11 @@ export class MarvelApiService {
   }
   
   getCharacters(): void{
+    this.isLoading = true
     this.getFromApi().subscribe((data : Hero[]) => {    
       this.characters = data
       this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+      this.isLoading = false
     })
   }
   getMoreCharacters(){
@@ -64,6 +67,7 @@ export class MarvelApiService {
     this.getFromApi().subscribe((data : Hero[]) => {
       this.characters.push(...data)
       this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+      this.isLoading = false
     })
   }
   
@@ -80,12 +84,15 @@ export class MarvelApiService {
   }
 
   newSearch(name : string){
+    this.isLoading = true
     this.heroName = name
     this.offset = 0
     this.characters = []
     this.getFromApi().subscribe((data : Hero[]) => {
       this.characters = data
       this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+      this.isLoading = false
+
     })
 
   }

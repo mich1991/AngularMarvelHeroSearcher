@@ -16,7 +16,7 @@
         </div>
         <div class="desc_box">
             <h1>{{character.name}}</h1>
-            <p>{{character.description}}</p>
+            <p>{{character.description.length ? character.description : 'Data not provided.'}}</p>
             <a href="{{character.urls[0].url}}" target="_blank">
                 <button>Visit at Marvel</button>
             </a>

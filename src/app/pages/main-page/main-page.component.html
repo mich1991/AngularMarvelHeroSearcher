@@ -1,8 +1,14 @@
-<div class="container" *ngIf="http.characters as characters">
-    <ng-container *ngFor="let hero of characters">
-        <app-single-card [hero] = "hero"></app-single-card>
-    </ng-container>
-    <ng-container *ngIf="http.moreAvailable">
-        <button (click) = "getMore()">More</button>
-    </ng-container>
-</div>
+<ng-container *ngIf="http.isLoading ; then loader ; else ready"></ng-container>
+<ng-template #loader>
+    <div class="container"><div class="loader"></div></div>
+</ng-template>
+<ng-template #ready>
+    <div class="container" *ngIf="http.characters as characters">
+        <ng-container *ngFor="let hero of characters">
+            <app-single-card [hero] = "hero"></app-single-card>
+        </ng-container>
+        <ng-container *ngIf="http.moreAvailable">
+            <button (click) = "getMore()">More</button>
+        </ng-container>
+    </div>
+</ng-template>
