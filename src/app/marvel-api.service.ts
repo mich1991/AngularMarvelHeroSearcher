@@ -20,8 +20,9 @@ export class MarvelApiService {
 
   heroName: string = 'iron'
   offset : number = 0
-  limit: number = 20
+  limit: number = 2
   characters :Hero[] = []
+  moreAvailable: boolean = false
 
   constructor(private http: HttpClient) { 
     this.getCharacters()
@@ -53,11 +54,17 @@ export class MarvelApiService {
   }
   
   getCharacters(): void{
-    this.getFromApi().subscribe((data : Hero[]) => this.characters = data)
+    this.getFromApi().subscribe((data : Hero[]) => {    
+      this.characters = data
+      this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+    })
   }
   getMoreCharacters(){
-    this.offset = this.offset + 20 
-    this.getFromApi().subscribe((data : Hero[]) => this.characters.push(...data))
+    this.offset = this.offset + this.limit 
+    this.getFromApi().subscribe((data : Hero[]) => {
+      this.characters.push(...data)
+      this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+    })
   }
   
   getCharacterById(id:string): Observable<{}> {
@@ -76,7 +83,13 @@ export class MarvelApiService {
     this.heroName = name
     this.offset = 0
     this.characters = []
-    this.getFromApi().subscribe((data : Hero[]) => this.characters = data)
+    this.getFromApi().subscribe((data : Hero[]) => {
+      this.characters = data
+      this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+    })
+
   }
+
+
 
 }

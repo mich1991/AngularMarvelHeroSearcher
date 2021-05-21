@@ -26,4 +26,8 @@ export class SidebarComponent implements OnInit {
     this.http.newSearch(name.value)
     name.value = ''
   }
+  test(event: any){
+    event.preventDefault()
+    console.log(event)
+  }
 }

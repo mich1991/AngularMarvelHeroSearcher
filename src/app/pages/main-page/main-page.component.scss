@@ -17,8 +17,8 @@
 button{
     @include normalButton;
     position: absolute;
-    bottom:1em
-}
-button:first-of-type{
-    left:20%
+    bottom:1em;
+    &:disabled{
+        display: none;
+    }
 }

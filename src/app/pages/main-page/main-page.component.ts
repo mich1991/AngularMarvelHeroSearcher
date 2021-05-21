@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { MarvelApiService } from 'src/app/marvel-api.service';
-import { Hero } from '../../models/Hero'
 
 
 @Component({
@@ -11,17 +10,15 @@ import { Hero } from '../../models/Hero'
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit , OnDestroy{
- 
-  characters: Hero[]= this.http.characters;
-  isLoading : boolean = false
 
+  isLoading : boolean = false
+  moreAvailable: boolean = false
 
   constructor(public http: MarvelApiService, private route: ActivatedRoute) { 
   }
 
 
   ngOnInit(): void {
-    
   }
 
   ngOnDestroy(): void{
@@ -30,12 +27,10 @@ export class MainPageComponent implements OnInit , OnDestroy{
 
   getMore(): void {
     this.http.getMoreCharacters()
+
   }
   
   getCharacters(): void {
     this.http.getCharacters()
   }
-
-  
-
 }

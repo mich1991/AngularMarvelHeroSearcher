@@ -1,5 +1,5 @@
 <p>Search character by name</p>
-<form>
+<form (submit)= "$event.preventDefault()">
     <i class="fas fa-search"></i>
     <input type="text" name="name" id="name" placeholder="Name..." #searchname>
     <button type="button" (click)="onClick(searchname)">Search</button>

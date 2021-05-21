@@ -2,5 +2,7 @@
     <ng-container *ngFor="let hero of characters">
         <app-single-card [hero] = "hero"></app-single-card>
     </ng-container>
-    <button (click) = "getMore()">More</button>
+    <ng-container *ngIf="http.moreAvailable">
+        <button (click) = "getMore()">More</button>
+    </ng-container>
 </div>
