@@ -19,6 +19,10 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   character: any
   isLoading:boolean = false
 
+  showComics: boolean = false
+  showSeries: boolean = false
+  showEvents: boolean = false
+
   constructor(private route: ActivatedRoute, private http: MarvelApiService, private location: Location) {
     this.paramId = this.route.snapshot.paramMap.get('id')!;
   }
@@ -44,6 +48,29 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   }
   goBack(){
     this.location.back()
+  }
+  show(str : string): void{
+    switch (str) {
+      case 'comics':
+        this.toggleShow()
+        this.showComics = true
+        break;
+      case 'series':
+        this.toggleShow()
+        this.showSeries = true
+        break;
+      case 'events':
+        this.toggleShow()
+        this.showEvents = true
+      break;
+      default:
+        break;
+    }
+  }
+  toggleShow(){
+    this.showComics = false
+    this.showSeries = false
+    this.showEvents = false
   }
 }
 

@@ -20,17 +20,37 @@
             <a href="{{character.urls[0].url}}" target="_blank">
                 <button>Visit at Marvel</button>
             </a>
-            <button (click)= "showDetails()">Check Me</button>
+            <!-- <button (click)= "showDetails()">Check Me</button> -->
         </div>
     </main>
     <aside>
         <h1>Appeared:</h1>
         <div class="appearience_box">
-            <button>Comics</button>
-            <button>Series</button>
-            <button>Events</button>
+            <button (click) ="show('comics')">Comics [{{character.comics.items.length}}]</button>
+            <button (click) ="show('series')">Series [{{character.series.items.length}}]</button>
+            <button (click) ="show('events')">Events [{{character.events.items.length}}]</button>
         </div>
+        <ng-container *ngIf="showComics; then comics "></ng-container>
+        <ng-container *ngIf="showSeries; then series "></ng-container>
+        <ng-container *ngIf="showEvents; then events "></ng-container>
     </aside>
 </div>
     
+</ng-template>
+
+
+<ng-template #comics>
+    <ul *ngFor="let item of character.comics.items">
+        <li>{{item.name}}</li>
+    </ul>
+</ng-template>
+<ng-template #series>
+    <ul *ngFor="let item of character.series.items">
+        <li>{{item.name}}</li>
+    </ul>
+</ng-template>
+<ng-template #events>
+    <ul *ngFor="let item of character.events.items">
+        <li>{{item.name}}</li>
+    </ul>
 </ng-template>
