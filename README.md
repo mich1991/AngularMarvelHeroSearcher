@@ -1,5 +1,7 @@
 # AngularMarvel
 
+<!-- If anyone is curious why I used slice pipe in img src of every image it's because Netlify requires https protocol. -->
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
 
 ## Development server
