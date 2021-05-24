@@ -50,7 +50,7 @@ export class MarvelApiService {
       //If only detailed description required
       //map((res: any) => res.data.results.filter((res : Hero) => res.description.length > 0)),
       map((res: any) => res.data.results),
-      tap(console.log)
+      // tap(console.log)
       )
   }
   
@@ -92,7 +92,6 @@ export class MarvelApiService {
       this.characters = data
       this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
       this.isLoading = false
-
     })
 
   }

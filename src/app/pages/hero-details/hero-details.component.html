@@ -12,7 +12,7 @@
     </div>
     <main>
         <div class="img_box">
-            <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+            <img src="https{{character.thumbnail.path | slice:4}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
         </div>
         <div class="desc_box">
             <h1>{{character.name}}</h1>

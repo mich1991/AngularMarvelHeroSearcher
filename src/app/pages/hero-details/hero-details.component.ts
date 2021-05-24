@@ -28,7 +28,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.paramMap.get('id'))
+    // console.log(this.route.snapshot.paramMap.get('id'))
     this.getCharacterById();
   }
   ngOnDestroy(): void{
@@ -38,7 +38,9 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   getCharacterById(){
     this.isLoading = true
     let id = this.paramId
-    const sub = this.http.getCharacterById(id).pipe(tap(console.log)).subscribe((res : any) => {
+    const sub = this.http.getCharacterById(id).pipe(
+      // tap(console.log)
+      ).subscribe((res : any) => {
       this.isLoading = false
       return this.character = res.data.results[0]})
     this.subscription.add(sub)

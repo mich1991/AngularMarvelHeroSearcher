@@ -1,6 +1,6 @@
 
 <div class="card__header">
-        <img src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}" srcset="">
+        <img src="https{{hero.thumbnail.path| slice:4}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}" srcset="">
 </div>
 <div class="card__body">
     <p><b>Name:</b> {{hero.name}}</p>
