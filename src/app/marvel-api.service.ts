@@ -15,7 +15,7 @@ import { map, tap } from 'rxjs/operators';
 
 export class MarvelApiService {
 
-  private url:string = 'http://gateway.marvel.com/v1/public/'
+  private url:string = 'https://gateway.marvel.com/v1/public/'
   private ts = Date.now()
 
   heroName: string = 'iron'
