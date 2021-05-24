@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {publicKey, privateKey} from './apikeys'
+import {PUBLIC_KEY, PRIVATE_KEY} from './apikeys'
 
 import * as md5 from 'md5'
 import { Observable } from 'rxjs';
@@ -30,14 +30,14 @@ export class MarvelApiService {
   }
 
   getHash(){
-    return md5(this.ts + privateKey + publicKey )
+    return md5(this.ts + PRIVATE_KEY + PUBLIC_KEY )
   }
 
   
   getFromApi() : Observable<Hero[]>{
     return this.http.get<Hero[]>(`${this.url}/characters`,{
       params: {
-        "apikey": publicKey,
+        "apikey": PUBLIC_KEY,
         "ts": String(this.ts),
         "hash": this.getHash(),
         "nameStartsWith": this.heroName,
@@ -74,7 +74,7 @@ export class MarvelApiService {
   getCharacterById(id:string): Observable<{}> {
     return this.http.get(`${this.url}/characters`,{
       params: {
-        "apikey": publicKey,
+        "apikey": PUBLIC_KEY,
         "ts": String(this.ts),
         "hash": this.getHash(),
         "id": id
