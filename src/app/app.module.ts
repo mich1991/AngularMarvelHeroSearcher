@@ -11,8 +11,6 @@ import { HeroDetailsComponent } from './pages/hero-details/hero-details.componen
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 
-import { NgPipesModule } from 'ngx-pipes';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +24,6 @@ import { NgPipesModule } from 'ngx-pipes';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgPipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
