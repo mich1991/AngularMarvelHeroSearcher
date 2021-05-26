@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {  Subscription } from 'rxjs';
 import { MarvelApiService } from 'src/app/marvel-api.service';
-import { tap } from 'rxjs/operators';
+// import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
 

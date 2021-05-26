@@ -23,3 +23,10 @@ h1{
     line-height: 46px;
     transform: translateX(-1em);
 }
+
+@media (max-width : 480px){
+    h1{
+        font-size: calc(#{$headerSize} - 0.8em );
+        line-height: 23px;
+    }
+}
