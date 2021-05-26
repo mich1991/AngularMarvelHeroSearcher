@@ -27,6 +27,8 @@ $singleCardRatio: 0.75;
 $singleCardHeight: 250px;
 
 $breakpoint : 1104px;
+$mobile : 480px;
+$mobileReduction : 4em;
 //// Components 
 
 // button 
@@ -57,6 +59,8 @@ $breakpoint : 1104px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: $headerFont;
 }
+
+
 //  loader from https://projects.lukehaas.me/css-loaders/
 .loader {
     font-size: 10px;

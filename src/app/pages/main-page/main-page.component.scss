@@ -26,3 +26,11 @@ button{
     position: absolute;
     align-self: center;
 }
+
+@media (max-width: $mobile) {
+    .container{
+        left: calc(#{$sidebarWidth} - #{$mobileReduction} );
+        // background-color: aqua;
+        width: calc(100% - (#{$sidebarWidth} - #{$mobileReduction}));
+    }
+}
