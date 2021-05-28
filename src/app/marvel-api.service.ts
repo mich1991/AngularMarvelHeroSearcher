@@ -62,7 +62,8 @@ export class MarvelApiService {
       this.isLoading = false
     })
   }
-  getMoreCharacters(){
+
+  getMoreCharacters(): void {
     this.offset = this.offset + this.limit 
     this.getFromApi().subscribe((data : Hero[]) => {
       this.characters.push(...data)
@@ -84,15 +85,19 @@ export class MarvelApiService {
   }
 
   newSearch(name : string){
-    this.isLoading = true
-    this.heroName = name
-    this.offset = 0
-    this.characters = []
-    this.getFromApi().subscribe((data : Hero[]) => {
-      this.characters = data
-      this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
-      this.isLoading = false
-    })
+    if(name.length > 0){
+
+      this.isLoading = true
+      this.heroName = name
+      this.offset = 0
+      this.characters = []
+      this.getFromApi().subscribe((data : Hero[]) => {
+        this.characters = data
+        this.characters.length % this.limit === 0 ? this.moreAvailable = true : this.moreAvailable = false
+        this.isLoading = false
+      })
+      
+    }
 
   }
 
